@@ -58,7 +58,26 @@ def consumir_insumo():
 
 
 def visualizar_insumo():
-    print("visualizar_insumo")
+    if len(nome_insumo.get()) < 2:
+        caixa_texto.delete("1.0", END)
+        caixa_texto.insert("1.0", f"Nome do Insumo inválido!")
+        return
+
+    cursor.execute(f'SELECT * FROM Estoque WHERE Produto="{nome_insumo.get()}"')
+    valores = cursor.fetchall()
+
+    texto = ""
+    for id_produto, nome, quantidade, validade, lote in valores:
+        texto = texto + f'''
+        -----
+        Produto: {nome}
+        QUantidade: {quantidade}
+        Validade: {validade}
+        Lote: {lote}
+        '''
+
+    caixa_texto.delete("1.0", END)
+    caixa_texto.insert("1.0", f"Nome do Insumo Inválido")
 
 
 ######### criação da Janela ##################
