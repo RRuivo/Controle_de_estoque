@@ -77,7 +77,7 @@ def visualizar_insumo():
         '''
 
     caixa_texto.delete("1.0", END)
-    caixa_texto.insert("1.0", f"Nome do Insumo Inválido")
+    caixa_texto.insert("1.0", {texto})
 
 
 ######### criação da Janela ##################
